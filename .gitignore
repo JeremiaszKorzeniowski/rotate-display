@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+
+# Wirtualne środowiska
+.venv/
+venv/
+env/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Lokalna konfiguracja
+config.json
+
+# IDE / edytory
+.vscode/
+.idea/
+*.code-workspace
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Logi
+*.log
