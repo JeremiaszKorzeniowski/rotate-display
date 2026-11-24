@@ -1,3 +1,4 @@
+import sys
 import ctypes
 import json
 import os
@@ -318,13 +319,19 @@ def monitor_items():
             radio=True,
         )
 
+def resource_path(name: str) -> str:
+    # działa i ze źródeł, i po spakowaniu przez PyInstaller (--onefile)
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, name)
+
 
 def make_icon_image() -> Image.Image:
-    img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    img = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.rounded_rectangle((18, 6, 46, 58), radius=4, fill=(40, 120, 220, 255), outline=(255, 255, 255, 255), width=3)
-    d.rectangle((24, 12, 40, 46), fill=(200, 225, 255, 255))
-    return img
+    blue = (0, 162, 232, 255)
+    d.rectangle((6, 1, 25, 30), outline=blue, width=3)
+    d.rectangle((1, 6, 30, 25), outline=blue, width=3)  
+    return img.resize((64, 64), Image.Resampling.NEAREST)
 
 
 def main():
